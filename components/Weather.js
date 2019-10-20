@@ -43,7 +43,12 @@ class Weather extends React.Component {
     render() {
         const {weather, temperature, isLoading} = this.state;
         return (
-            <View>
+            <View style={
+                {
+                    width: '100%',
+                    height: '100%'
+                }
+            }>
                 { isLoading
                     ? (
                         <Text>TODO: Add a loader</Text>
@@ -57,14 +62,9 @@ class Weather extends React.Component {
                                 },
                             ]
                         }>
-                            <View style={styles.headerContainer}>
-                                <MaterialCommunityIcons size={140} name={weatherConditions[weather].icon} color={'#fff'} />
+                                <MaterialCommunityIcons size={72} name={weatherConditions[weather].icon} color={'#fff'} />
                                 <Text style={styles.tempText}> { Math.round(temperature) } ° </Text>
-                            </View>
-                            <View style={styles.bodyContainer}>
                                 <Text style={styles.title}> { weatherConditions[weather].title } </Text>
-                                <Text style={styles.subtitle}> {weatherConditions[weather].subtitle} </Text>
-                            </View>
                         </View>
                     )
                 }
@@ -75,33 +75,18 @@ class Weather extends React.Component {
 
 const styles = StyleSheet.create({
     weatherContainer: {
-        width: '100%',
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        backgroundColor: '#f7b733',
         padding: 20,
-        flex: 1,
-        backgroundColor: '#f7b733'
-    },
-    headerContainer: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
     },
     tempText: {
-        fontSize: 48,
+        fontSize: 32,
         color: '#fff'
-    },
-    bodyContainer: {
-        flex: 2,
-        alignItems: 'flex-start',
-        justifyContent: 'flex-end',
-        paddingLeft: 25,
-        marginBottom: 40
     },
     title: {
-        fontSize: 48,
-        color: '#fff'
-    },
-    subtitle: {
-        fontSize: 24,
+        fontSize: 32,
         color: '#fff'
     }
 });
